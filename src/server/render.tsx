@@ -5,11 +5,12 @@ import { APIGatewayEvent } from "aws-lambda";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
 
-import App from "../App";
+import AlphaGo from "../AlphaGo";
 import ConfigContext from "../components/ConfigContext";
 import config from "./config";
 import html from "./html";
 import { Stats } from "./types";
+
 
 /**
  * Server-side rendering
@@ -19,7 +20,7 @@ export default async function render(_event: APIGatewayEvent): Promise<string> {
   const stats = (await import("../../dist/stats.json")) as unknown as Stats;
   const content = renderToString(
     <ConfigContext.Provider value={config}>
-      <App />
+      <AlphaGo />
     </ConfigContext.Provider>,
   );
   return html({ stats, content, config });

@@ -12,7 +12,7 @@ import { hydrate } from "react-dom";
 
 import ConfigContext from "../components/ConfigContext";
 import { Config } from "../server/config";
-import App from "../App";
+import AlphaGo from "../AlphaGo";
 
 const config = (window as any).__CONFIG__ as Config;
 delete (window as any).__CONFIG__;
@@ -23,7 +23,7 @@ const render = () => {
     <>
       {/* The configuration is the outmost component. This allows us to read the configuration even in the theme */}
       <ConfigContext.Provider value={config}>
-        <App />
+        <AlphaGo />
       </ConfigContext.Provider>
     </>,
     document.getElementById("root"),
